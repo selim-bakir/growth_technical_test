@@ -7,7 +7,7 @@
           <tr class="graphic-occurrences">
             <td>
               <tr>
-                <td :style="{height : occurrence / numberOfSets * 100+ '%'}">{{ occurrence }}</td>
+                <td :style="{height : occurrence / numberOfSets * 100 + '%'}">{{ occurrence }}</td>
               </tr>
             </td>
           </tr>
@@ -58,7 +58,7 @@ export default {
 .graphic{
   height: 500px;
   width: 500px;
-  margin: 0 auto;
+  margin: 30px auto;
   text-align: center;
   &-occurrences{
     height: 100%;
