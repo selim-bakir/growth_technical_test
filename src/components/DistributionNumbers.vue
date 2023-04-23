@@ -2,15 +2,17 @@
   <div>
     <h1>Distribution de nombres :</h1>
     <table class="graphic">
-      <tr class="graphic-occurrences">
-        <td v-for="(occurrence, index) in occurrences" :key="'occurences_'+index">
-          <tr>
-            <td :style="{height : occurrence + '%'}">{{ occurrence }}</td>
+      <tr>
+        <td v-for="(occurrence, index) in occurrences" :key="index">
+          <tr class="graphic-occurrences">
+            <td>
+              <tr>
+                <td :style="{height : occurrence + '%'}">{{ occurrence }}</td>
+              </tr>
+            </td>
           </tr>
+          <tr class="graphic-index">{{ index + 1 }}</tr>
         </td>
-      </tr>
-      <tr class="graphic-index">
-        <td v-for="(occurrence, index) in occurrences" :key="'index_'+index">{{ index + 1 }}</td>
       </tr>
     </table>
     <button @click="getRandomIntegerSet">Refresh</button>
