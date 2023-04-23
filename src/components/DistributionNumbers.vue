@@ -7,7 +7,7 @@
           <tr class="graphic-occurrences">
             <td>
               <tr>
-                <td :style="{height : occurrence + '%'}">{{ occurrence }}</td>
+                <td :style="{height : occurrence / numberOfSets * 100+ '%'}">{{ occurrence }}</td>
               </tr>
             </td>
           </tr>
@@ -26,7 +26,8 @@ export default {
   data() {
     return {
       numbers: [],
-      occurrences: []
+      occurrences: [],
+      numberOfSets: 100
     }
   },
   mounted() {
@@ -35,7 +36,7 @@ export default {
   methods:{
     //Recupération du set de donnée via l'API 
     getRandomIntegerSet(){
-      axios.get('https://www.random.org/integer-sets/?sets=100&num=9&min=1&max=9&seqnos=off&commas=on&sort=off&order=index&format=plain')
+      axios.get('https://www.random.org/integer-sets/?sets='+this.numberOfSets+'&num=9&min=1&max=9&seqnos=off&commas=on&sort=off&order=index&format=plain')
       .then(response => {
         this.numbers = response.data.split(',');
         this.occurrences = Array(9).fill(0);
@@ -58,24 +59,34 @@ export default {
   height: 500px;
   width: 500px;
   margin: 0 auto;
+  text-align: center;
   &-occurrences{
     height: 100%;
-    tr{
+    display: flex;
+    justify-content: center;
+    td{
       height: 100%;
-      align-items: flex-end;
-      display: flex;
-      justify-content: center;
-      td{
-        background-color: blue;
-        color:#fff;
-        padding: 10px;
-      }
+      display: block;
+        tr{
+          height: 100%;
+          align-items: flex-end;
+          display: flex;
+          justify-content: center;
+        td{
+          background-color: blue;
+          color:#fff;
+          padding: 10px;
+        }
+    }
+
     }
   }
   &-index{
     height: 20px;
     color: blue;
     font-weight: 800;
+    display: flex;
+    justify-content: center;
   }
 }
 </style>
